@@ -16,7 +16,39 @@
 >git add README.md
 >git commit -m "first commit"
 >git branch -M main
->git remote add origin http://github.com/xfjwljh/github-use.git
+>git remote add origin https://github.com/xfjwljh/github-use.git
 > git push -u origin main
+
+然后会有登录界面，选第一个，然后进入网页登陆授权
+报错：fatal: unable to access 'http://github.com/xfjwljh/github-use.git/': OpenSSL SSL_read: Connection was reset, errno 10054
+
+解决1：git config --global http.sslVerify "false" ,没有解决
+解决2：git config http.postBuffer 524288000
+
+报错：fatal: unable to access 'http://github.com/xfjwljh/github-use.git/': Failed to connect to github.com port 443 after 21052 ms: Timed out
+
+解决1：用ssh代替http 
+>git remote origin remove origin
+>git remote add origin git@github.com:xfjwljh/github-use.git
+
+报错：Connection reset by 140.82.114.3 port 22
+fatal: Could not read from remote repository.Please make sure you have the correct access rights
+and the repository exists.
+
+解决1：在github账号中添加ssh key
+>ssh-keygen -t rsa -C"2777192525@qq.com"
+
+然后进入提示信息的路径中，找到id_rsa.pub,用记事本打开，复制内容
+计入github，头像下面进入settings，在左边找到SSH and GPC keys 一项，新建一个ssh，标题随意，将刚才复制的内容放到下面
+
+还是报同样的错
+
+尝试不用git push -u origin main,而是git push
+报错：fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use  git push --set-upstream origin main
+
+还是报同样的错，淦
+
+等了一会儿，重新push成功了，可能在github上更新ssh需要一点时间同步
 
 
