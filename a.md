@@ -52,3 +52,13 @@ To push the current branch and set the remote as upstream, use  git push --set-u
 等了一会儿，重新push成功了，可能在github上更新ssh需要一点时间同步
 
 
+# clone 一个仓库到本地
+git clone http://github.com/sfjwljh/sfjwljh.git
+
+报错：fatal: unable to access 'http://github.com/sfjwljh/sfjwljh.git/': OpenSSL SSL_read: Connection was reset, errno 10054
+
+又输了一遍$ git config --global http.sslVerify "false"
+报错：fatal: unable to access 'http://github.com/sfjwljh/sfjwljh.git/': Failed to connect to github.com port 443 after 21099 ms: Timed out
+
+解决：不用http的连接，用git clone git@github.com:sfjwljh/sfjwljh.git,成功
+
