@@ -62,3 +62,5 @@ git clone http://github.com/sfjwljh/sfjwljh.git
 
 解决：不用http的连接，用git clone git@github.com:sfjwljh/sfjwljh.git,成功
 
+# push别人的库到别人的git仓
+直接 git push origin main
